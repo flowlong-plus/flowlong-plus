@@ -56,13 +56,6 @@
 提issue或者在交流群内交流
 
 
-
-## 💡 交流群
-
-添加好友拉你进去
-
-<img src="./README/wechat.jpeg" alt="image" style="zoom: 25%;" />
-
 ## 🎃 截图
 
 ![image](./README/1.png)
@@ -75,3 +68,8 @@
 
 ![image](./README/5.png)
 
+## 💡 交流群
+
+添加好友拉你进去
+
+<img src="./README/wechat.jpeg" alt="image" style="width:150px;" />
