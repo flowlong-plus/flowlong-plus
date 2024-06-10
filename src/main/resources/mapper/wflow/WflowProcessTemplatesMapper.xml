@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yuencode.flowlongplus.workflow.mapper.WflowProcessTemplatesMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.yuencode.flowlongplus.workflow.entity.WflowProcessTemplates">
+        <id column="template_id" property="templateId"/>
+        <result column="template_key" property="templateKey"/>
+        <result column="template_version" property="templateVersion"/>
+        <result column="template_name" property="templateName"/>
+        <result column="settings" property="settings"/>
+        <result column="form_items" property="formItems"/>
+        <result column="process" property="process"/>
+        <result column="logo" property="logo"/>
+        <result column="who_commit" property="whoCommit"/>
+        <result column="who_edit" property="whoEdit"/>
+        <result column="who_export" property="whoExport"/>
+        <result column="remark" property="remark"/>
+        <result column="group_id" property="groupId"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="workflow_id" property="workflowId"/>
+        <result column="workflow_version" property="workflowVersion"/>
+        <result column="tenant_id" property="tenantId"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        template_id, template_key, template_name, settings, form_items, `process`, logo, notify, who_commit, who_edit, who_export, remark, group_id, `status`, create_time, update_time, workflow_id, tenant_id
+    </sql>
+
+    <select id="getList" parameterType="cn.yuencode.flowlongplus.workflow.entity.WflowProcessTemplates"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"></include>
+        from wflow_process_templates
+        where (template_key, template_version) in (
+        select template_key, MAX(template_version)
+        from wflow_process_templates
+        group by template_key
+        )
+        <if test="null != groupId and groupId!=''">
+            and group_id=#{groupId}
+        </if>
+    </select>
+
+</mapper>

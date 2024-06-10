@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yuencode.flowlongplus.mapper.SysPermissionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.yuencode.flowlongplus.entity.SysPermission">
+        <id column="id" property="id" />
+        <result column="menu_name" property="menuName" />
+        <result column="permission_code" property="permissionCode" />
+        <result column="permission_name" property="permissionName" />
+        <result column="menu_type" property="menuType" />
+        <result column="open_type" property="openType" />
+        <result column="level" property="level" />
+        <result column="parent_id" property="parentId" />
+        <result column="route_path" property="routePath" />
+        <result column="icon" property="icon" />
+        <result column="hide_in_menu" property="hideInMenu" />
+        <result column="status" property="status" />
+        <result column="order_num" property="orderNum" />
+        <result column="keep_alive" property="keepAlive" />
+        <result column="is_frame" property="isFrame" />
+        <result column="component" property="component" />
+        <result column="active_menu" property="activeMenu" />
+        <result column="fixed_index_in_tab" property="fixedIndexInTab" />
+        <result column="route_name" property="routeName" />
+        <result column="href" property="href" />
+        <result column="title" property="title" />
+        <result column="i18n_key" property="i18nKey" />
+        <result column="local_icon" property="localIcon" />
+        <result column="multi_tab" property="multiTab" />
+        <result column="constant" property="constant" />
+        <result column="create_time" property="createTime" />
+        <result column="create_by" property="createBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="update_by" property="updateBy" />
+        <result column="tenant_id" property="tenantId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, menu_name, permission_code, permission_name, menu_type, open_type, `level`, parent_id, route_path, icon, hide_in_menu, `status`, order_num, keep_alive, is_frame, `component`, active_menu, fixed_index_in_tab, route_name, href, title, i18n_key, local_icon, multi_tab, constant, create_time, create_by, update_time, update_by, tenant_id
+    </sql>
+    <select id="selectListByRoleIds" resultMap="BaseResultMap">
+        select p.id,
+        p.menu_name,
+        ifnull(p.permission_code, '') as permission_code,
+        p.permission_name,
+        p.menu_type,
+        p.open_type,
+        p.`level`,
+        p.parent_id,
+        p.route_path,
+        p.icon,
+        p.hide_in_menu,
+        p.`status`,
+        p.order_num,
+        p.keep_alive,
+        p.is_frame,
+        p.`component`,
+        p.active_menu,
+        p.fixed_index_in_tab,
+        p.route_name,
+        p.href,
+        p.title,
+        p.i18n_key,
+        p.local_icon,
+        p.multi_tab,
+        p.constant,
+        p.create_time,
+        p.create_by,
+        p.update_time,
+        p.update_by,
+        p.tenant_id
+        from sys_permission p
+        left join sys_role_permission rp on p.id = rp.permission_id
+        where rp.role_id in
+        <foreach item="item" index="index" collection="roleIds" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        and p.menu_type in (0, 1)
+        and p.status = 1
+        order by p.parent_id, p.order_num
+    </select>
+
+</mapper>

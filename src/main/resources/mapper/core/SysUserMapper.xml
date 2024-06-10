@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yuencode.flowlongplus.mapper.SysUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.yuencode.flowlongplus.entity.SysUser">
+        <id column="id" property="id" />
+        <result column="account" property="account" />
+        <result column="password" property="password" />
+        <result column="nickname" property="nickname" />
+        <result column="sex" property="sex" />
+        <result column="mobile" property="mobile" />
+        <result column="remark" property="remark" />
+        <result column="email" property="email" />
+        <result column="delete_flag" property="deleteFlag" />
+        <result column="dept_id" property="deptId" />
+        <result column="post_id" property="postId" />
+        <result column="leader_id" property="leaderId" />
+        <result column="is_enable" property="isEnable" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="tenant_id" property="tenantId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, `account`, `password`, nickname, sex, mobile, remark, email, delete_flag, dept_id, post_id, leader_id, is_enable, create_time, update_time, tenant_id
+    </sql>
+
+</mapper>
