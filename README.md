@@ -7,6 +7,12 @@
 * 开箱即用：支持嵌入已有系统
 * 多租户支持：数据均进行了租户隔离
 
+> 使用此后端需要获取flowlong授权。
+>
+> 由于AGPL协议问题，本项目前端不再开源，请支持官方企业版系统，完善程度更高。
+>
+> 这里给出flowlong官方授权链接：https://doc.flowlong.com/docs/authorization.html
+
 [flowlong引擎 https://gitee.com/aizuda/flowlong](https://gitee.com/aizuda/flowlong)
 
 ## 🌵 预览
@@ -70,6 +76,4 @@
 
 ## 💡 交流群
 
-添加好友拉你进去
-
-<img src="./README/wechat.jpeg" alt="image" style="width:150px;" />
+协议问题项目停止维护，谢谢大家支持~
